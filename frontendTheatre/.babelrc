@@ -1,0 +1,12 @@
+{
+  "presets": [
+    ["env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 7", "firefox >= 68"]
+        }
+      }
+    ],
+    "stage-3"
+  ]
+}
