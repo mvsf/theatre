@@ -1,9 +1,9 @@
 <template>
-  <h1> COUCOU </h1>
+  <h1> Confirmation achat </h1>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'ConfirmationAchat'
 }
 </script>

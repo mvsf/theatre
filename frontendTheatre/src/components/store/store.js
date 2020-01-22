@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -7,24 +8,38 @@ Vue.use(Vuex)
 // STATE
 // ---------------------------------------------------------------------------------------------
 
-
 const state = {
-  url_serveur: '',
+  url_serveur: 'http://localhost:8080',
+  allSpectacle: [],
+  selectedSpectacle: null
 }
 
 // ---------------------------------------------------------------------------------------------
 // GETTERS
 // ---------------------------------------------------------------------------------------------
 
-const getters = {}
+const getters = {
+  getSpectacleByTitle: state => (title) => { state.allSpectacle.find(spectacle => spectacle.titre === title) }
+}
 
 // ---------------------------------------------------------------------------------------------
 // MUTATIONS
 // ---------------------------------------------------------------------------------------------
 
-const mutations = {}
+const mutations = {
+  SET_ALL_SPECTACLE(state, data) { state.allSpectacle = data },
+  SET_SELECTED_SPECTACLE(state, selectedSpectacle) { state.selectedSpectacle = selectedSpectacle }
+}
 
-const actions = {}
+const actions = {
+  getAllSpectacle(context) {
+    return axios.get('http://localhost:8080' + '/getAllSpectacle')
+        .then(response => (context.commit('SET_ALL_SPECTACLE', response.data)))
+  },
+  setSelectedSpectacle(context, selectedSpectacle) {
+    return context.commit('SET_SELECTED_SPECTACLE', selectedSpectacle)
+  }
+}
 
 // ---------------------------------------------------------------------------------------------
 // INITIALISATION DU STORE ET EXPORT
