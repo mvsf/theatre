@@ -9,7 +9,7 @@ Vue.use(Vuex)
 // ---------------------------------------------------------------------------------------------
 
 const state = {
-  url_serveur: 'http://localhost:8080',
+  url_serveur: 'http://localhost:8080/backendTheatre',
   allSpectacle: [],
   selectedSpectacle: null
 }
@@ -19,7 +19,7 @@ const state = {
 // ---------------------------------------------------------------------------------------------
 
 const getters = {
-  getSpectacleByTitle: state => (title) => { state.allSpectacle.find(spectacle => spectacle.titre === title) }
+  getSpectacleByTitle: state => (title) => { return state.selectedSpectacle = state.allSpectacle.find(spectacle => spectacle.titre === title)}
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ const mutations = {
 
 const actions = {
   getAllSpectacle(context) {
-    return axios.get('http://localhost:8080' + '/getAllSpectacle')
+    return axios.get(state.url_serveur + '/getAllSpectacle')
         .then(response => (context.commit('SET_ALL_SPECTACLE', response.data)))
   },
   setSelectedSpectacle(context, selectedSpectacle) {

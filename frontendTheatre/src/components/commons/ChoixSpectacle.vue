@@ -5,6 +5,7 @@
     <option v-for="spectacle in allSpectacle">{{ spectacle.titre }}</option>
   </select>
   <b-button v-if="selectedSpectacleTitle" @click="setSelectedSpectacle()" variant="success">Acheter</b-button>
+  
 </div>
 </template>
 
@@ -18,9 +19,11 @@ export default {
       selectedSpectacleTitle: null,
     }
   },
-  computed: mapState({
-    allSpectacle: 'allSpectacle'
-  }),
+  computed: {
+    ...mapState([
+      'allSpectacle'
+    ])
+  },
   mounted: function() {
     this.getAllSpectacle()
   },
@@ -28,7 +31,8 @@ export default {
     getAllSpectacle() {
       return this.$store.dispatch('getAllSpectacle')
     },
-    setSelectedSpectacle() {      
+    setSelectedSpectacle() {
+      console.log(this.$store.getters.getSpectacleByTitle(this.selectedSpectacleTitle))
       return this.$store.dispatch('setSelectedSpectacle', this.$store.getters.getSpectacleByTitle(this.selectedSpectacleTitle))
     }
   }

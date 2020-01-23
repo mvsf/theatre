@@ -2,8 +2,7 @@
 <div id="app">  
   <!-- <router-view></router-view> -->
   <choix-spectacle v-if="!selectedSpectacle"></choix-spectacle>
-  <choix-places v-if="selectedSpectacle != null"></choix-places>
-  {{selectedSpectacle}}
+  <choix-places v-if="selectedSpectacle != null"></choix-places>  
 </div>
 </template>
 
@@ -16,8 +15,8 @@ import { mapState } from 'vuex'
 export default {
   name: 'App',
   components: { ChoixSpectacle, ChoixPlaces },
-  computed: mapState([
-    'selectedSpectacle'
-  ]),
+  computed: {
+    ...mapState([ 'selectedSpectacle'])
+  }
 }
 </script>
