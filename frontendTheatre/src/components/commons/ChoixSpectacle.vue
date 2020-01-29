@@ -32,7 +32,6 @@ export default {
       return this.$store.dispatch('getAllSpectacle')
     },
     setSelectedSpectacle() {
-      console.log(this.$store.getters.getSpectacleByTitle(this.selectedSpectacleTitle))
       return this.$store.dispatch('setSelectedSpectacle', this.$store.getters.getSpectacleByTitle(this.selectedSpectacleTitle))
     }
   }

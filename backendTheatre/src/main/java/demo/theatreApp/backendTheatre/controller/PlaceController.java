@@ -20,17 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
-public class SpectacleController {
-
-    /**
+public class PlaceController {
+    
+        /**
      * Fonction qui permet de récupérer la liste de tous les spectacles
      *
      * @return la liste de tous les spectacles
      * @throws java.sql.SQLException
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/getAllSpectacle")
+    @RequestMapping(method = RequestMethod.GET, value = "/placesNonDisponibles")
 
     public List<Spectacle> getAllSpectacle() throws SQLException, ClassNotFoundException {
         return SpectacleDAO.getAllSpectacle();
     }
+    
 }
